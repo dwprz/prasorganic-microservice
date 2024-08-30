@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package otp;
+
+import "proto/otp/type/otp.proto";
+import "google/protobuf/empty.proto";
+
+option go_package = "github.com/dwprz/prasorganic-proto/protogen/otp";
+
+service OtpService {
+    rpc Send(otp.type.SendReq) returns (google.protobuf.Empty) {}
+    rpc Verify(otp.type.VerifyReq) returns (otp.type.VerifyRes) {}
+}

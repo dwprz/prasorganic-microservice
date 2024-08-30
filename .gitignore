@@ -1,0 +1,8 @@
+script.sh
+unseal.key
+.env
+main
+.htpasswd
+dummy*.*
+/dummy-nodejs
+elasticsearch.key

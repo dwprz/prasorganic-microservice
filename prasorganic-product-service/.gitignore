@@ -1,0 +1,4 @@
+.env
+dummy*.*
+dummy/
+cmd/main

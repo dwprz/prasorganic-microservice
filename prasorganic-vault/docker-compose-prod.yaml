@@ -1,0 +1,31 @@
+services:
+  prasorganic-vault:
+    container_name: prasorganic-vault
+    image: hashicorp/vault:1.17
+    environment:
+      VAULT_ADDR: http://0.0.0.0:8200
+      VAULT_API_ADDR: http://0.0.0.0:8200
+    ports:
+      - 8201:8200
+    volumes:
+      - type: bind
+        source: ./config.hcl
+        target: /vault/config/config.hcl
+      - type: volume
+        source: prasorganic-vault-data
+        target: /vault/data
+
+    cap_add:
+      - IPC_LOCK
+    networks:
+      - prasorganic-network
+    command: vault server -config=/vault/config/config.hcl
+
+volumes:
+  prasorganic-vault-data:
+    name: prasorganic-vault-data
+
+networks:
+  prasorganic-network:
+    name: prasorganic-network
+    external: true
